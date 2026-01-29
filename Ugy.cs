@@ -25,5 +25,10 @@ namespace DigitalisNyomozas
 		public string Cim { get => cim; set => cim = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
 		public string Allapot { get => allapot; set => allapot = value; }
+
+		public override string ToString()
+		{
+			return $"{this.cim}: {this.id}, {this.Leiras}, {this.allapot}";
+		}
 	}
 }

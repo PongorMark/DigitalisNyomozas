@@ -21,5 +21,10 @@ public Tanu(string nev, string vallomas, string datum)
 		public string Nev { get => nev; set => nev = value; }
 		public string Vallomas { get => vallomas; set => vallomas = value; }
 		public string Datum { get => datum; set => datum = value; }
+
+		public override string ToString()
+		{
+			return $"{this.nev}: {this.vallomas}, {this.datum}";
+		}
 	}
 }

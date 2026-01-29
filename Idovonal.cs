@@ -19,5 +19,10 @@ namespace DigitalisNyomozas
 
 		public string Datum { get => datum; set => datum = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
+
+		public override string ToString()
+		{
+			return $"{this.datum}, {this.leiras}";
+		}
 	}
 }

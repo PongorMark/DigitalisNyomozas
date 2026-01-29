@@ -16,5 +16,11 @@ namespace DigitalisNyomozas
 		}
 
 		public string AktualisStatusz { get => aktualisStatusz; set => aktualisStatusz = value; }
+
+		public override string ToString()
+		{
+			return $"{this.aktualisStatusz}";
+		}
+
 	}
 }

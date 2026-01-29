@@ -23,6 +23,9 @@ namespace DigitalisNyomozas
 		public int Id { get => id; set => id = value; }
 		public string Szerepkor { get => szerepkor; set => szerepkor = value; }
 
-
+		public override string ToString()
+		{
+			return $"{this.nev}: {this.id}, {this.szerepkor}"
+		}
 	}
 }

@@ -25,5 +25,10 @@ namespace DigitalisNyomozas
 		public string Tipus { get => tipus; set => tipus = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
 		public int Megbizhatosag { get => megbizhatosag; set => megbizhatosag = value; }
+
+		public override string ToString()
+		{
+			return $"{this.id}: {this.tipus}, {this.leiras}, {this.megbizhatosag}";
+		}
 	}
 }
