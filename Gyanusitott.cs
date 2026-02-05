@@ -19,13 +19,13 @@ namespace DigitalisNyomozas
 			this.statusz = statusz;
 		}
 
-		public string Nev { get => nev; set => nev = value; }
+		public string Nev { get => Nev; set => Nev = value; }
 		public int GyanuSzint { get => gyanuSzint; set => gyanuSzint = value; }
 		public string Statusz { get => statusz; set => statusz = value; }
 
 		public override string ToString()
 		{
-			return $"{this.nev}: {this.gyanuSzint} {this.statusz}";
+			return $"{this.nev}, {this.GyanuSzint}, {this.statusz}";
 		}
 	}
 }
