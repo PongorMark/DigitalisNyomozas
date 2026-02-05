@@ -9,8 +9,11 @@
 			Szemely s2 = new Szemely("Kiss Félix", 26, "tolvaj");
 			Bizonyitek b1 = new Bizonyitek(1, "fotó", "A szemtanú fényképeket készített az ékszerek hűlt helyéről.", 5);
 			Bizonyitek b2 = new Bizonyitek(2, "fotó", "A szemtanú lefényképezte, ahogy a gyanúsítottak elektromos rollerekkel versenyeztek.", 3);
+			Bizonyitek b3 = new Bizonyitek(3, "digitális adat", "Kiss Félix színes bűnügyi története", 4);
+			Bizonyitek b4 = new Bizonyitek(4, "fotó", "Az egyik tolvaj készített egy szelfit és kirakta instára azzal a felirattal, hogy 'Megyek és kirabolom a Louvre-t a haverokkal'.", 5);
+
 			List<Szemely> szemelyek = new List<Szemely> { s1, s2 };
-			List<Bizonyitek> bizonyitekok = new List<Bizonyitek> { b1, b2 };
+			List<Bizonyitek> bizonyitekok = new List<Bizonyitek> { b1, b2, b3, b4 };
 			Ugy U1 = new Ugy(1, "Louvre ékszerrablás", "3 láthatósági mellénybe öltözött karbantartónak álcázott tolvaj ellopott sok felbecsülhetetlen értékű ékszert, miközben a múzeum NYITVA volt", "folyamatban", szemelyek, bizonyitekok);
             UgyAllapot UA1 = new UgyAllapot("lezárt");
             Gyanusitott g1 = new Gyanusitott("Nagy Árpád", 30, "szabad");
