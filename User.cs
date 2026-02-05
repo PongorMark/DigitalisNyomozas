@@ -25,7 +25,7 @@ namespace DigitalisNyomozas
 
 		public override string ToString()
 		{
-			return $"{this.nev}: {this.id}, {this.szerepkor}"
+			return $"{this.nev}: {this.id}, {this.szerepkor}";
 		}
 	}
 }
