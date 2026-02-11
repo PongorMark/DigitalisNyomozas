@@ -43,9 +43,39 @@ namespace DigitalisNyomozas
                 {
                     case "1":
                         Console.WriteLine("\n--- Ügyek ---");
-                        foreach (var ugy in store.Cases)
-                            Console.WriteLine(ugy);
+                        Console.WriteLine("1. Ügyek listázása");
+                        Console.WriteLine("2. Új ügy felvétele");
+                        Console.Write("Választás: ");
+                        string ugyInput = Console.ReadLine();
+
+                        switch (ugyInput)
+                        {
+                            case "1":
+                                Console.WriteLine("\n--- Ügyek listája ---");
+                                foreach (var ugy in store.Cases)
+                                    Console.WriteLine(ugy);
+                                break;
+                            case "2":
+                                Console.WriteLine("\n--- Új ügy felvétele ---");
+                                Console.Write("Cím: ");
+                                string cim = Console.ReadLine();
+                                Console.Write("Leírás: ");
+                                string leiras = Console.ReadLine();
+                                Console.Write("Állapot (nyitott/folyamatban/lezárt): ");
+                                string allapot = Console.ReadLine();
+
+                                int nextId = store.Cases.Count + 1;
+                                Ugy ujUgy = new Ugy(nextId, cim, leiras, allapot, new List<Szemely>(), new List<Bizonyitek>());
+                                store.Cases.Add(ujUgy);
+
+                                Console.WriteLine($"\nSikeresen felvéve az új ügy: {ujUgy}");
+                                break;
+                            default:
+                                Console.WriteLine("Érvénytelen választás.");
+                                break;
+                        }
                         break;
+
                     case "2":
                         Console.WriteLine("\n--- Személyek ---");
                         foreach (var szemely in store.Persons)
