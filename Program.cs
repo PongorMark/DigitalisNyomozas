@@ -155,6 +155,38 @@ namespace DigitalisNyomozas
 
                                 Console.WriteLine($"\nSikeresen hozzáadva a bizonyíték: {ujBizonyitek} az ügyhöz: {selectedUgyB.Cim}");
                                 break;
+                            case "5":
+                                Console.WriteLine("\n--- Ügy állapotának módosítása ---");
+
+                                if (store.Cases.Count == 0)
+                                {
+                                    Console.WriteLine("Nincs még egyetlen ügy sem.");
+                                    break;
+                                }
+
+                                Console.WriteLine("Válassz egy ügyet:");
+                                for (int i = 0; i < store.Cases.Count; i++)
+                                {
+                                    Console.WriteLine($"{i + 1}. {store.Cases[i].Cim} ({store.Cases[i].Allapot})");
+                                }
+
+                                Console.Write("Ügy száma: ");
+                                if (!int.TryParse(Console.ReadLine(), out int statusIndex) || statusIndex < 1 || statusIndex > store.Cases.Count)
+                                {
+                                    Console.WriteLine("Érvénytelen választás.");
+                                    break;
+                                }
+
+                                Ugy selectedUgyStatus = store.Cases[statusIndex - 1];
+
+                                Console.Write("Új állapot (nyitott / folyamatban / lezárt): ");
+                                string ujAllapot = Console.ReadLine();
+
+                                // Módosítás
+                                selectedUgyStatus.Allapot = ujAllapot;
+                                Console.WriteLine($"\nAz ügy '{selectedUgyStatus.Cim}' állapota módosítva: {selectedUgyStatus.Allapot}");
+                                break;
+
 
 
                             default:
