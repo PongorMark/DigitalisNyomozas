@@ -6,21 +6,20 @@ using System.Threading.Tasks;
 
 namespace DigitalisNyomozas
 {
-	internal class UgyAllapot
-	{
-		private string aktualisStatusz;
+    internal class UgyAllapot
+    {
+        private string aktualisStatusz;
 
-		public UgyAllapot(string aktualisStatusz)
-		{
-			this.aktualisStatusz = aktualisStatusz;
-		}
+        public UgyAllapot(string aktualisStatusz)
+        {
+            this.aktualisStatusz = aktualisStatusz;
+        }
 
-		public string AktualisStatusz { get => aktualisStatusz; set => aktualisStatusz = value; }
+        public string AktualisStatusz { get => aktualisStatusz; set => aktualisStatusz = value; }
 
-		public override string ToString()
-		{
-			return $"{this.aktualisStatusz}";
-		}
-
-	}
+        public override string ToString()
+        {
+            return aktualisStatusz;
+        }
+    }
 }

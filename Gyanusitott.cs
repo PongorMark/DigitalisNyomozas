@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace DigitalisNyomozas
 {
-	internal class Gyanusitott
-	{
-		private string nev;
-		private int gyanuSzint;
-		private string statusz;
+    internal class Gyanusitott
+    {
+        private Szemely szemely;
+        private int gyanuSzint;
+        private string statusz;
 
-		public Gyanusitott(string nev, int gyanuSzint, string statusz)
-		{
-			this.nev = nev;
-			this.gyanuSzint = gyanuSzint;
-			this.statusz = statusz;
-		}
+        public Gyanusitott(Szemely szemely, int gyanuSzint, string statusz)
+        {
+            this.szemely = szemely;
+            this.gyanuSzint = gyanuSzint;
+            this.statusz = statusz;
+        }
 
-		public string Nev { get => Nev; set => Nev = value; }
-		public int GyanuSzint { get => gyanuSzint; set => gyanuSzint = value; }
-		public string Statusz { get => statusz; set => statusz = value; }
+        public Szemely Szemely { get => szemely; set => szemely = value; }
+        public int GyanuSzint { get => gyanuSzint; set => gyanuSzint = value; }
+        public string Statusz { get => statusz; set => statusz = value; }
 
-		public override string ToString()
-		{
-			return $"{this.nev}, {this.GyanuSzint}, {this.statusz}";
-		}
-	}
+        public override string ToString()
+        {
+            return $"{szemely.Nev} | Gyanúsítottság: {gyanuSzint}% | Státusz: {statusz}";
+        }
+    }
 }
