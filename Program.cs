@@ -223,7 +223,47 @@ namespace DigitalisNyomozas
 
                                 Console.WriteLine($"\nEsemény hozzáadva: {ujEsem} az ügyhöz: {selectedUgyTimeline.Cim}");
                                 break;
+                            case "7":
+                                Console.WriteLine("\n--- Gyanúsított értékelése ---");
 
+                                if (store.Cases.Count == 0)
+                                {
+                                    Console.WriteLine("Nincs még egyetlen ügy sem.");
+                                    break;
+                                }
+
+                                Console.WriteLine("Válassz egy ügyet:");
+                                for (int i = 0; i < store.Cases.Count; i++)
+                                {
+                                    Console.WriteLine($"{i + 1}. {store.Cases[i].Cim} ({store.Cases[i].Allapot})");
+                                }
+
+                                Console.Write("Ügy száma: ");
+                                if (!int.TryParse(Console.ReadLine(), out int gyanusIndex) || gyanusIndex < 1 || gyanusIndex > store.Cases.Count)
+                                {
+                                    Console.WriteLine("Érvénytelen választás.");
+                                    break;
+                                }
+
+                                Ugy selectedUgyGyanus = store.Cases[gyanusIndex - 1];
+
+                                List<Gyanusitott> gyanusitottak = new List<Gyanusitott>();
+
+                                foreach (var szemely in selectedUgyGyanus.Szemelyeklistaja)
+                                {
+                                    int gyanuSzint = selectedUgyGyanus.Bizonyitekoklistaja.Count * 20;
+                                    if (gyanuSzint > 100) gyanuSzint = 100;
+
+                                    Gyanusitott g = new Gyanusitott(szemely, gyanuSzint, gyanuSzint >= 60 ? "Magas" : "Alacsony");
+                                    gyanusitottak.Add(g);
+                                }
+
+                                Console.WriteLine("\n--- Gyanúsítottak ---");
+                                foreach (var gy in gyanusitottak)
+                                {
+                                    Console.WriteLine($"{gy.Szemely.Nev} | Gyanúsítottság: {gy.GyanuSzint}% | Státusz: {gy.Statusz}");
+                                }
+                                break;
                             default:
                                 Console.WriteLine("Érvénytelen választás.");
                                 break;
