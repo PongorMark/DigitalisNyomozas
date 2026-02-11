@@ -9,7 +9,6 @@ namespace DigitalisNyomozas
         {
             DataStore store = new DataStore();
 
-            // Tesztadatok
             User u1 = new User("Gipsz Jakab", 1, "Nyomozó");
             store.Users.Add(u1);
 
@@ -26,7 +25,6 @@ namespace DigitalisNyomozas
                 "Folyamatban", new List<Szemely> { s1, s2 }, new List<Bizonyitek> { b1 });
             store.Cases.Add(U1);
 
-            // Egyszerű menü
             bool running = true;
             while (running)
             {
@@ -70,6 +68,49 @@ namespace DigitalisNyomozas
 
                                 Console.WriteLine($"\nSikeresen felvéve az új ügy: {ujUgy}");
                                 break;
+                            case "3":
+                                Console.WriteLine("\n--- Személy hozzáadása ügyhöz ---");
+
+                                if (store.Cases.Count == 0)
+                                {
+                                    Console.WriteLine("Nincs még egyetlen ügy sem.");
+                                    break;
+                                }
+
+                                Console.WriteLine("Válassz egy ügyet:");
+                                for (int i = 0; i < store.Cases.Count; i++)
+                                {
+                                    Console.WriteLine($"{i + 1}. {store.Cases[i].Cim} ({store.Cases[i].Allapot})");
+                                }
+
+                                Console.Write("Ügy száma: ");
+                                if (!int.TryParse(Console.ReadLine(), out int ugyIndex) || ugyIndex < 1 || ugyIndex > store.Cases.Count)
+                                {
+                                    Console.WriteLine("Érvénytelen választás.");
+                                    break;
+                                }
+
+                                Ugy selectedUgy = store.Cases[ugyIndex - 1];
+
+                                Console.Write("Személy neve: ");
+                                string nev = Console.ReadLine();
+
+                                Console.Write("Életkor: ");
+                                if (!int.TryParse(Console.ReadLine(), out int eletkor))
+                                {
+                                    Console.WriteLine("Érvénytelen életkor.");
+                                    break;
+                                }
+
+                                Console.Write("Megjegyzés: ");
+                                string megjegyzes = Console.ReadLine();
+
+                                Szemely ujSzemely = new Szemely(nev, eletkor, megjegyzes);
+                                selectedUgy.Szemelyeklistaja.Add(ujSzemely);
+
+                                Console.WriteLine($"\nSikeresen hozzáadva a személy: {ujSzemely} az ügyhöz: {selectedUgy.Cim}");
+                                break;
+
                             default:
                                 Console.WriteLine("Érvénytelen választás.");
                                 break;
