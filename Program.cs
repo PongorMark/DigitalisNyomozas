@@ -110,6 +110,52 @@ namespace DigitalisNyomozas
 
                                 Console.WriteLine($"\nSikeresen hozzáadva a személy: {ujSzemely} az ügyhöz: {selectedUgy.Cim}");
                                 break;
+                            case "4":
+                                Console.WriteLine("\n--- Bizonyíték hozzáadása ügyhöz ---");
+
+                                if (store.Cases.Count == 0)
+                                {
+                                    Console.WriteLine("Nincs még egyetlen ügy sem.");
+                                    break;
+                                }
+
+                                Console.WriteLine("Válassz egy ügyet:");
+                                for (int i = 0; i < store.Cases.Count; i++)
+                                {
+                                    Console.WriteLine($"{i + 1}. {store.Cases[i].Cim} ({store.Cases[i].Allapot})");
+                                }
+
+                                Console.Write("Ügy száma: ");
+                                if (!int.TryParse(Console.ReadLine(), out int ugyIndexB) || ugyIndexB < 1 || ugyIndexB > store.Cases.Count)
+                                {
+                                    Console.WriteLine("Érvénytelen választás.");
+                                    break;
+                                }
+
+                                Ugy selectedUgyB = store.Cases[ugyIndexB - 1];
+
+                                int nextEvidenceId = store.Evidences.Count + 1;
+
+                                Console.Write("Bizonyíték típusa (pl. fotó, dokumentum, digitális adat): ");
+                                string tipus = Console.ReadLine();
+
+                                Console.Write("Leírás: ");
+                                string leiras2 = Console.ReadLine();
+
+                                Console.Write("Megbízhatósági érték (1-5): ");
+                                if (!int.TryParse(Console.ReadLine(), out int megbizhatosag) || megbizhatosag < 1 || megbizhatosag > 5)
+                                {
+                                    Console.WriteLine("Érvénytelen megbízhatósági érték.");
+                                    break;
+                                }
+
+                                Bizonyitek ujBizonyitek = new Bizonyitek(nextEvidenceId, tipus, leiras2, megbizhatosag);
+                                selectedUgyB.Bizonyitekoklistaja.Add(ujBizonyitek);
+                                store.Evidences.Add(ujBizonyitek);
+
+                                Console.WriteLine($"\nSikeresen hozzáadva a bizonyíték: {ujBizonyitek} az ügyhöz: {selectedUgyB.Cim}");
+                                break;
+
 
                             default:
                                 Console.WriteLine("Érvénytelen választás.");
