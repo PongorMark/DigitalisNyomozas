@@ -182,12 +182,47 @@ namespace DigitalisNyomozas
                                 Console.Write("Új állapot (nyitott / folyamatban / lezárt): ");
                                 string ujAllapot = Console.ReadLine();
 
-                                // Módosítás
                                 selectedUgyStatus.Allapot = ujAllapot;
                                 Console.WriteLine($"\nAz ügy '{selectedUgyStatus.Cim}' állapota módosítva: {selectedUgyStatus.Allapot}");
                                 break;
+                            case "6":
+                                Console.WriteLine("\n--- Idővonal esemény hozzáadása ---");
+
+                                if (store.Cases.Count == 0)
+                                {
+                                    Console.WriteLine("Nincs még egyetlen ügy sem.");
+                                    break;
+                                }
+
+                                Console.WriteLine("Válassz egy ügyet:");
+                                for (int i = 0; i < store.Cases.Count; i++)
+                                {
+                                    Console.WriteLine($"{i + 1}. {store.Cases[i].Cim} ({store.Cases[i].Allapot})");
+                                }
+
+                                Console.Write("Ügy száma: ");
+                                if (!int.TryParse(Console.ReadLine(), out int idovonalIndex) || idovonalIndex < 1 || idovonalIndex > store.Cases.Count)
+                                {
+                                    Console.WriteLine("Érvénytelen választás.");
+                                    break;
+                                }
+
+                                Ugy selectedUgyTimeline = store.Cases[idovonalIndex - 1];
+
+                                Console.Write("Esemény dátuma: ");
+                                string datumEsem = Console.ReadLine();
+
+                                Console.Write("Esemény leírása: ");
+                                string leirasEsem = Console.ReadLine();
+
+                                Idovonal ujEsem = new Idovonal(datumEsem, leirasEsem);
+                                selectedUgyTimeline.IdovonalLista.Add(ujEsem);
+
+                                Console.WriteLine($"\nEsemény hozzáadva: {ujEsem} az ügyhöz: {selectedUgyTimeline.Cim}");
 
 
+                                Console.WriteLine($"\nEsemény hozzáadva: {ujEsem} az ügyhöz: {selectedUgyTimeline.Cim}");
+                                break;
 
                             default:
                                 Console.WriteLine("Érvénytelen választás.");

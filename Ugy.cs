@@ -14,6 +14,9 @@ namespace DigitalisNyomozas
         private string allapot;
         private List<Szemely> szemelyeklistaja;
         private List<Bizonyitek> bizonyitekoklistaja;
+        private List<Idovonal> idovonalLista = new List<Idovonal>();
+        internal List<Idovonal> IdovonalLista { get => idovonalLista; set => idovonalLista = value; }
+
 
         public Ugy(int id, string cim, string leiras, string allapot,
             List<Szemely> szemelyeklistaja, List<Bizonyitek> bizonyitekoklistaja)
